@@ -5,9 +5,12 @@ import com.brinks.entities.contracts.CredentialSecret;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public abstract class Credential {
-    protected CredentialId id;
+    protected Long id;
+    protected List<CredentialId> credentialIds;
     protected CredentialSecret secret;
 }

@@ -9,4 +9,5 @@ import lombok.Setter;
 public abstract class Phone implements EntityWithPropertyValidation {
     protected String number ;
     protected Boolean isMobile;
+
 }

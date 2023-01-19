@@ -12,7 +12,7 @@ public abstract class User {
     protected UUID id;
     protected String fullName;
     protected List<Phone> phones;
-    protected List<Credential> credentials;
+    protected Credential credential;
     protected List<AssumedRole> assumedRoles;
 
 }
