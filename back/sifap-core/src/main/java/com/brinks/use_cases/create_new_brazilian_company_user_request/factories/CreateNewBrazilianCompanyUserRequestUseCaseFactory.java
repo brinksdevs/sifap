@@ -1,0 +1,7 @@
+package com.brinks.use_cases.create_new_brazilian_company_user_request.factories;
+
+import com.brinks.use_cases.contracts.UseCaseFactory;
+import com.brinks.use_cases.create_new_brazilian_employee_user_request.CreateNewBrazilianEmployeeUserRequestUseCase;
+
+public interface CreateNewBrazilianCompanyUserRequestUseCaseFactory extends UseCaseFactory<CreateNewBrazilianEmployeeUserRequestUseCase> {
+}

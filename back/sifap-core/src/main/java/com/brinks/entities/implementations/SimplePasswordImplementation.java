@@ -8,4 +8,10 @@ public class SimplePasswordImplementation extends SimplePassword {
         //TODO: implementar criptografia na obtenção da senha;
         return null;
     }
+
+    @Override
+    public Boolean hasValidProperties() {
+        //TODO: implementar validação de propriedades
+        return null;
+    }
 }

@@ -7,4 +7,10 @@ public class EmailImplementation extends Email {
     public String retrieveIdValue() {
         return this.address;
     }
+
+    @Override
+    public Boolean hasValidProperties() {
+        //TODO: implementar validação propriedades
+        return null;
+    }
 }
