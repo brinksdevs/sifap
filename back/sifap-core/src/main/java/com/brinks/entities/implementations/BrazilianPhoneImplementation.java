@@ -2,8 +2,7 @@ package com.brinks.entities.implementations;
 
 import com.brinks.entities.Phone;
 
-import static com.brinks.entities.implementations.validation_rules.BrazilianPhoneValidationRule.ALLOWED_DDD_LENGTH;
-import static com.brinks.entities.implementations.validation_rules.BrazilianPhoneValidationRule.ALLOWED_DDD_VALUES;
+import static com.brinks.entities.implementations.validation_rules.BrazilianPhoneValidationRule.*;
 
 public class BrazilianPhoneImplementation extends Phone {
     private String DDD;
@@ -13,11 +12,43 @@ public class BrazilianPhoneImplementation extends Phone {
     @Override
     public Boolean hasValidProperties() {
         this.executeDDDExtraction();
-        return this.isDDDValid() && this.isNotDDDValid();
+        return this.isDDDValid() &&  this.isNotDDDValid();
     }
 
     private Boolean isNotDDDValid() {
-        return this.isDDDLengthValid() && this.isDDDValueAllowed();
+        if (this.isMobile)
+            return this.isMobileNotDDDPartValid();
+        return this.isLandlineNotDDDPartValid();
+    }
+
+    private Boolean isLandlineNotDDDPartValid() {
+        return this.isLandlineSizeValid() && this.isLandlineSecondDigitValid();
+    }
+
+    private boolean isLandlineSecondDigitValid() {
+        return ALLOWED_SECOND_LANDLINE_NUMBERS.stream()
+                .anyMatch(allowedSecondLandline -> allowedSecondLandline.equals(this.notDDD.substring(1,2)));
+    }
+
+    private Boolean isLandlineSizeValid() {
+        return ALLOWED_LANDLINE_LENGTH.equals(this.notDDD.length());
+    }
+
+    private Boolean isMobileNotDDDPartValid() {
+        return this.isMobileSizeValid() && this.isMobileFirstDigitValid() && this.isMobileSecondDigitValid();
+    }
+
+    private boolean isMobileSecondDigitValid() {
+        return ALLOWED_SECOND_CELLPHONE_NUMBERS.stream()
+                .anyMatch(allowedSecondNumber -> allowedSecondNumber.equals(this.notDDD.substring(1,2)));
+    }
+
+    private boolean isMobileFirstDigitValid() {
+        return this.notDDD.startsWith(ALLOWED_FIRST_CELLPHONE_NUMBER);
+    }
+
+    private Boolean isMobileSizeValid() {
+        return this.notDDD.length() == ALLOWED_NUMBER_LENGTH;
     }
 
     private boolean isDDDValueAllowed() {
@@ -30,8 +61,7 @@ public class BrazilianPhoneImplementation extends Phone {
     }
 
     private Boolean isDDDValid() {
-        //todo:implementar validação do DDD
-        return false;
+        return this.isDDDLengthValid() && this.isDDDValueAllowed();
     }
 
     private void executeDDDExtraction() {

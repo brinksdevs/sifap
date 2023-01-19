@@ -15,4 +15,13 @@ public class BrazilianPhoneValidationRule {
             "41", "42", "43", "44", "45", "46", "51", "53", "54", "55", "47", "48", "49"
     );
     public static final Integer ALLOWED_DDD_LENGTH = 2;
+    public static final Integer ALLOWED_NUMBER_LENGTH = 9;
+    public static final Integer ALLOWED_LANDLINE_LENGTH = 8;
+    public static final String ALLOWED_FIRST_CELLPHONE_NUMBER = "9";
+    public static final List<String> ALLOWED_SECOND_CELLPHONE_NUMBERS = List.of(
+            "6","7","8","9"
+    );
+    public static final List<String> ALLOWED_SECOND_LANDLINE_NUMBERS = List.of(
+            "2","3","4","5"
+    );
 }
